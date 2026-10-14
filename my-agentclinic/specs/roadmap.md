@@ -6,7 +6,7 @@ High-level implementation phases for AgentClinic:
 - Initialize Node.js + TypeScript environment with Hono
 - Basic server setup with `/` health check route rendering layout and components
 - Layout component with header, main, and footer subcomponents
-- Static CSS stylesheet linked and served
+- Static CSS stylesheet linked and served (mobile-first responsive design foundation with media queries and custom properties)
 
 ## Phase 2 — Database & Agents
 - SQLite setup (`better-sqlite3`) and database schema for agents
@@ -19,4 +19,4 @@ High-level implementation phases for AgentClinic:
 ## Phase 4 — Appointments & Staff Dashboard
 - Appointment booking workflow
 - Staff dashboard for tracking patient load, appointments, and system health
-- Polish, styling, and responsive UI for modern browsers
+- Polish, styling, and responsive UI audit for modern browsers across all viewports
