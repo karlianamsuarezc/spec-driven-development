@@ -11,3 +11,7 @@ export interface Ailment {
   name: string;
   description: string;
 }
+
+export type AilmentWithAgents = Ailment & {
+  agents: Agent[];
+};
