@@ -19,6 +19,9 @@ Record the exact Hono version in `package.json` with no range prefix (e.g., `"ho
 ### Enforce strict TypeScript
 `tsconfig.json` must include `"strict": true`. This is non-negotiable from the first commit so the codebase never accumulates loose types.
 
+### Mobile-first responsive design
+All CSS must be written mobile-first: base styles target small screens; `min-width` media queries enhance for larger viewports. CSS custom properties must be used for spacing and color tokens. The `<meta name="viewport">` tag must be present in the layout. This baseline applies to every phase — responsive design is never deferred.
+
 ## Context
 
 This phase exists to prove the baseline works: Node runs TypeScript, Hono serves a response, and the dev loop is functional. Nothing more.
@@ -30,4 +33,4 @@ This is the first visible page a developer sees when they clone and run the proj
 ## Stakeholder Notes
 
 - **Mary** needs TypeScript end-to-end (satisfied by `strict: true` + successful `tsc --noEmit`)
-- **Steve** has no requirements yet; this phase is plumbing only
+- **Steve** requires responsive design on modern browsers — satisfied by mobile-first CSS with viewport meta tag from this phase forward
