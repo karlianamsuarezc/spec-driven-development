@@ -2,9 +2,11 @@
 
 High-level implementation phases for AgentClinic:
 
-## Phase 1 — Scaffold & Server
-- Initialize Node.js + Express + TypeScript environment
-- Basic server setup with `/` health check route returning "AgentClinic is open for business"
+## Phase 1 — Scaffold & Server ✅
+- Initialize Node.js + TypeScript environment with Hono
+- Basic server setup with `/` health check route rendering layout and components
+- Layout component with header, main, and footer subcomponents
+- Static CSS stylesheet linked and served
 
 ## Phase 2 — Database & Agents
 - SQLite setup (`better-sqlite3`) and database schema for agents
