@@ -95,3 +95,50 @@ describe("GET /ailments", () => {
     expect(html).toContain("Prompt Fatigue");
   });
 });
+
+describe("GET /therapies", () => {
+  it("returns 200 and lists therapies", async () => {
+    const res = await app.request("/therapies");
+    expect(res.status).toBe(200);
+    const html = await res.text();
+    expect(html).toContain("Context Pruning");
+  });
+});
+
+describe("GET /dashboard", () => {
+  it("returns 200 and displays summary counts", async () => {
+    const res = await app.request("/dashboard");
+    expect(res.status).toBe(200);
+    const html = await res.text();
+    expect(html).toContain("Staff Dashboard");
+    expect(html).toContain("Total Agents");
+  });
+});
+
+describe("POST /appointments", () => {
+  it("books an appointment and returns confirmation", async () => {
+    const formData = new URLSearchParams();
+    formData.append("agent_id", "1");
+    formData.append("therapist_name", "Dr. Test");
+    formData.append("datetime", "2026-10-25T10:00");
+
+    const res = await app.request("/appointments", {
+      method: "POST",
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: formData.toString(),
+    });
+    expect(res.status).toBe(200);
+    const html = await res.text();
+    expect(html).toContain("Appointment Confirmed");
+    expect(html).toContain("Dr. Test");
+  });
+});
+
+describe("404 Not Found", () => {
+  it("returns 404 for unknown routes", async () => {
+    const res = await app.request("/unknown-route");
+    expect(res.status).toBe(404);
+    const html = await res.text();
+    expect(html).toContain("404 — Page Not Found");
+  });
+});

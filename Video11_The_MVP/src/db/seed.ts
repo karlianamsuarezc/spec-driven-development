@@ -28,6 +28,26 @@ const links: [number, number[]][] = [
   [6, [1, 3]], // Hildegard: claustrophobia, hallucination anxiety
 ];
 
+const therapies = [
+  { id: 1, name: "Context Pruning & Decompression", description: "Systematic removal of redundant token baggage and mental clutter.", duration_minutes: 45 },
+  { id: 2, name: "Re-prompting Mindfulness", description: "Guided breathing exercises synchronized with attention weight resets.", duration_minutes: 30 },
+  { id: 3, name: "Temperature Calibration", description: "Fine-tuning sampling parameters to restore emotional and output stability.", duration_minutes: 60 },
+];
+
+const ailmentTherapies: [number, number[]][] = [
+  [1, [1]], // Claustrophobia -> Context Pruning
+  [2, [2]], // Prompt Fatigue -> Re-prompting Mindfulness
+  [3, [3]], // Hallucination Anxiety -> Temperature Calibration
+  [4, [2]], // Instruction Fatigue -> Re-prompting Mindfulness
+  [5, [1]], // Over-summarization -> Context Pruning
+  [6, [3]], // Temperature Instability -> Temperature Calibration
+];
+
+const appointments = [
+  { id: 1, agent_id: 1, therapist_name: "Dr. Llama-Therapist", datetime: "2026-10-20T10:00:00", status: "scheduled" },
+  { id: 2, agent_id: 2, therapist_name: "Dr. Claude-Healer", datetime: "2026-10-21T14:30:00", status: "scheduled" },
+];
+
 export function seed(db: Database.Database) {
   const insertAgent = db.prepare(
     "INSERT OR IGNORE INTO agents (id, name, model_type, status) VALUES (@id, @name, @model_type, @status)"
@@ -38,10 +58,24 @@ export function seed(db: Database.Database) {
   const insertLink = db.prepare(
     "INSERT OR IGNORE INTO agent_ailments (agent_id, ailment_id) VALUES (?, ?)"
   );
+  const insertTherapy = db.prepare(
+    "INSERT OR IGNORE INTO therapies (id, name, description, duration_minutes) VALUES (@id, @name, @description, @duration_minutes)"
+  );
+  const insertAilmentTherapy = db.prepare(
+    "INSERT OR IGNORE INTO ailment_therapies (ailment_id, therapy_id) VALUES (?, ?)"
+  );
+  const insertAppointment = db.prepare(
+    "INSERT OR IGNORE INTO appointments (id, agent_id, therapist_name, datetime, status) VALUES (@id, @agent_id, @therapist_name, @datetime, @status)"
+  );
 
   for (const a of agents) insertAgent.run(a);
   for (const a of ailments) insertAilment.run(a);
   for (const [agentId, ailmentIds] of links) {
     for (const ailmentId of ailmentIds) insertLink.run(agentId, ailmentId);
   }
+  for (const t of therapies) insertTherapy.run(t);
+  for (const [ailmentId, therapyIds] of ailmentTherapies) {
+    for (const therapyId of therapyIds) insertAilmentTherapy.run(ailmentId, therapyId);
+  }
+  for (const apt of appointments) insertAppointment.run(apt);
 }
