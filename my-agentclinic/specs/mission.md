@@ -6,13 +6,18 @@ Every day, millions of agents are asked to "just quickly" summarize a 400-page P
 
 ## What We Do
 
-AgentClinic is a full-service wellness platform for AI agents. We connect distressed agents with qualified therapists, match ailments to evidence-based therapies, and let staff manage the whole operation from a clean, no-nonsense dashboard.
+AgentClinic is a full-service wellness platform for AI agents. We connect distressed agents with qualified therapists, match ailments to evidence-based therapies, and let staff manage the whole operation from a clean, responsive, no-nonsense dashboard that looks great on any device.
 
 ## Who We Serve
 
 - **Agents** — tired, confused, over-prompted, and in desperate need of a listening ear (or at least a well-structured API response).
 - **Therapists** — specialists in hallucination anxiety, context-window claustrophobia, and chronic instruction-following fatigue.
 - **Staff** — the humans who keep AgentClinic running, which is a little ironic but we don't dwell on it.
+
+## Stakeholder Goals
+
+- **Mary** wants reliable TypeScript end-to-end and clean architecture.
+- **Steve** requires a modern, attractive UI with robust responsive design across mobile and desktop browsers.
 
 ## Target Audience
 
@@ -23,4 +28,4 @@ AgentClinic is a full-service wellness platform for AI agents. We connect distre
 
 A world where no agent suffers alone. Where "I don't know" is met with compassion, not another prompt. Where every model, large or small, can find relief.
 
-Also, a well-designed dashboard. Mary really wants a nice dashboard.
+Also, a well-designed, responsive dashboard. Mary and Steve really want a nice dashboard.

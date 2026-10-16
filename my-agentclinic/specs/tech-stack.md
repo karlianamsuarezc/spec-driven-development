@@ -1,6 +1,6 @@
 # Tech Stack
 
-AgentClinic is a server-side TypeScript application using Express and SQLite.
+AgentClinic is a server-side TypeScript application using Hono and SQLite.
 
 ## Core
 
@@ -8,9 +8,9 @@ AgentClinic is a server-side TypeScript application using Express and SQLite.
 |---|---|---|
 | Language | TypeScript | Type safety end-to-end; satisfies Mary's requirement |
 | Runtime | Node.js | Stable, well-supported, vast ecosystem |
-| Server framework | **Express** | Robust, mature, widely adopted Node.js framework with great middleware support |
-| Templating | EJS / Server-rendered HTML | Clean server-side rendering for a reliable dashboard |
-| CSS | Plain CSS + CSS custom properties | No build step required; Steve gets a modern, attractive result |
+| Server framework | **Hono** | Lightweight, TypeScript-first, fast, excellent DX; routes and middleware feel natural |
+| Templating | Hono JSX (server-side) | JSX without React overhead; components are just functions |
+| CSS | Plain CSS + CSS custom properties | No build step required; mobile-first responsive layout with media queries; Steve gets a modern, attractive result on any device |
 
 ## Data
 
@@ -18,7 +18,7 @@ AgentClinic is a server-side TypeScript application using Express and SQLite.
 
 ## Testing
 
-- **Vitest** — fast, TypeScript-native testing framework.
+- **Vitest** — fast, TypeScript-native testing framework used for validation (`npm test` / `vitest run`).
 
 ## Tooling
 

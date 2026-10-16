@@ -11,3 +11,18 @@ export interface Ailment {
   name: string;
   description: string;
 }
+
+export interface Therapy {
+  id: number;
+  name: string;
+  description: string;
+  duration_minutes: number;
+}
+
+export interface Appointment {
+  id: number;
+  agent_id: number;
+  therapist_name: string;
+  datetime: string;
+  status: string;
+}

@@ -4,11 +4,21 @@
   "description": "",
   "main": "dist/index.js",
   "scripts": {
-    "build": "tsc"
+    "build": "tsc",
+    "dev": "tsx watch src/index.tsx",
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run --passWithNoTests"
   },
-  "dependencies": {},
+  "dependencies": {
+    "@hono/node-server": "1.19.12",
+    "hono": "4.12.9"
+  },
   "devDependencies": {
-    "typescript": "^5.5.3"
+    "@types/supertest": "^7.2.1",
+    "supertest": "^7.3.0",
+    "tsx": "4.21.0",
+    "typescript": "^5.5.3",
+    "vitest": "^1.4.0"
   },
   "private": true
 }

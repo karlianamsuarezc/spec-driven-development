@@ -29,10 +29,34 @@ header {
   border-bottom: 1px solid var(--color-border);
 }
 
+header nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
 header a {
   font-weight: 600;
   text-decoration: none;
   color: inherit;
+}
+
+header nav ul {
+  list-style: none;
+  display: flex;
+  gap: var(--space-md);
+  margin: 0;
+  padding: 0;
+}
+
+header nav li a {
+  font-weight: 400;
+  color: var(--color-subtle);
+}
+
+header nav li a:hover {
+  color: var(--color-text);
 }
 
 main {
@@ -47,6 +71,22 @@ footer {
   border-top: 1px solid var(--color-border);
   font-size: var(--font-size-sm);
   color: var(--color-subtle);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-block: var(--space-md);
+}
+
+th, td {
+  padding: var(--space-xs) var(--space-sm);
+  text-align: left;
+  border-bottom: 1px solid var(--color-border);
+}
+
+th {
+  font-weight: 600;
 }
 
 /* Tablet and up */

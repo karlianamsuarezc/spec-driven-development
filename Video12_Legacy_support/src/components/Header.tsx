@@ -17,6 +17,9 @@ export const Header: FC = () => (
         <li>
           <a href="/dashboard">Dashboard</a>
         </li>
+        <li>
+          <a href="/feedback">Feedback</a>
+        </li>
       </ul>
     </nav>
   </header>

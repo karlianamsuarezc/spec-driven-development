@@ -1,7 +1,19 @@
-import {FC} from "hono/jsx";
+import { FC } from "hono/jsx";
 
-export const Header: FC = () => (
-    <header>
-        <a href="/">AgentClinic</a>
-    </header>
+type HeaderProps = {};
+
+export const Header: FC<HeaderProps> = () => (
+  <header>
+    <nav>
+      <a href="/">AgentClinic</a>
+      <ul>
+        <li>
+          <a href="/agents">Agents</a>
+        </li>
+        <li>
+          <a href="/ailments">Ailments</a>
+        </li>
+      </ul>
+    </nav>
+  </header>
 );

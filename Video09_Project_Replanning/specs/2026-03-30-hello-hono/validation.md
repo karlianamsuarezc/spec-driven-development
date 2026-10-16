@@ -39,8 +39,20 @@ HTTP status must be `200 OK`. Response body must be HTML and must contain:
 
 `tsconfig.json` must contain `"strict": true`.
 
+### 6. Responsive design is in place
+
+The rendered HTML must contain `<meta name="viewport" content="width=device-width, initial-scale=1.0">`. `static/style.css` must use CSS custom properties and at least one `min-width` media query.
+
+### 7. Test script is wired up
+
+```
+npm test
+```
+
+Must exit with code 0. No test files are required for this phase, but the script must exist and Vitest must be installed.
+
 ## Not Required
 
-- No automated tests needed for this phase
+- No additional test cases required for this phase beyond what is listed above
 - No CI pipeline required
 - Browser rendering not checked (curl is sufficient)

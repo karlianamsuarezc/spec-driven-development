@@ -32,6 +32,25 @@ export const AgentDetail: FC<AgentDetailProps> = ({
         </>
       )}
     </article>
+
+    <article>
+      <header>
+        <h3>Book Therapy Appointment</h3>
+      </header>
+      <form action="/appointments" method="post">
+        <input type="hidden" name="agent_id" value={agent.id} />
+        <label>
+          Therapist Name
+          <input type="text" name="therapist_name" required placeholder="e.g. Dr. Llama-Therapist" />
+        </label>
+        <label>
+          Date & Time
+          <input type="datetime-local" name="datetime" required />
+        </label>
+        <button type="submit">Book Appointment</button>
+      </form>
+    </article>
+
     <p>
       <a href="/agents">← Back to agents</a>
     </p>
