@@ -78,6 +78,16 @@ describe("migrate", () => {
       .get();
     expect(row).toBeDefined();
   });
+
+  it("creates the feedback table", () => {
+    const db = freshDb();
+    const row = db
+      .prepare(
+        "SELECT name FROM sqlite_master WHERE type='table' AND name='feedback'"
+      )
+      .get();
+    expect(row).toBeDefined();
+  });
 });
 
 describe("seed", () => {
@@ -131,6 +141,15 @@ describe("seed", () => {
     seed(db);
     const { count } = db
       .prepare("SELECT COUNT(*) as count FROM appointments")
+      .get() as { count: number };
+    expect(count).toBeGreaterThanOrEqual(2);
+  });
+
+  it("inserts at least 2 feedback entries", () => {
+    const db = freshDb();
+    seed(db);
+    const { count } = db
+      .prepare("SELECT COUNT(*) as count FROM feedback")
       .get() as { count: number };
     expect(count).toBeGreaterThanOrEqual(2);
   });

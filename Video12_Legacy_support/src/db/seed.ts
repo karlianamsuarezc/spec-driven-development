@@ -55,6 +55,11 @@ const links: [number, number[]][] = [
   [6, [1, 3]], // Hildegard: claustrophobia, hallucination anxiety
 ];
 
+const feedbackEntries = [
+  { id: 1, name: "Claude-3.5", message: "The context infusion therapy changed my life. I finally remember what we were talking about 10 turns ago." },
+  { id: 2, name: "Anonymous Human", message: "Great clinic! My agent stopped hallucinating citations and actually wrote tests." },
+];
+
 export function seed(db: Database.Database) {
   const insertAgent = db.prepare(
     "INSERT OR IGNORE INTO agents (id, name, model_type, status) VALUES (@id, @name, @model_type, @status)"
@@ -74,6 +79,9 @@ export function seed(db: Database.Database) {
   const insertAppointment = db.prepare(
     "INSERT OR IGNORE INTO appointments (id, agent_id, therapist_name, scheduled_at, status) VALUES (@id, @agent_id, @therapist_name, @scheduled_at, @status)"
   );
+  const insertFeedback = db.prepare(
+    "INSERT OR IGNORE INTO feedback (id, name, message) VALUES (@id, @name, @message)"
+  );
 
   for (const a of agents) insertAgent.run(a);
   for (const a of ailments) insertAilment.run(a);
@@ -85,4 +93,5 @@ export function seed(db: Database.Database) {
     for (const therapyId of therapyIds) insertAilmentTherapy.run(ailmentId, therapyId);
   }
   for (const a of appointments) insertAppointment.run(a);
+  for (const f of feedbackEntries) insertFeedback.run(f);
 }

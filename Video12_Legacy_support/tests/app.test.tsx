@@ -239,6 +239,46 @@ describe("GET /dashboard", () => {
   });
 });
 
+describe("Feedback", () => {
+  it("GET /feedback returns 200 and lists feedback", async () => {
+    const res = await app.request("/feedback");
+    expect(res.status).toBe(200);
+    const html = await res.text();
+    expect(html).toContain("Clinic Feedback");
+    expect(html).toContain("Claude-3.5");
+  });
+
+  it("POST /feedback with valid data redirects to /feedback", async () => {
+    const formData = new FormData();
+    formData.append("name", "GPT-4o");
+    formData.append("message", "Amazing recovery program!");
+    const res = await app.request("/feedback", {
+      method: "POST",
+      body: formData,
+    });
+    expect(res.status).toBe(302);
+    expect(res.headers.get("Location")).toBe("/feedback");
+
+    const getRes = await app.request("/feedback");
+    const html = await getRes.text();
+    expect(html).toContain("GPT-4o");
+    expect(html).toContain("Amazing recovery program!");
+  });
+
+  it("POST /feedback with missing fields returns 200 with error", async () => {
+    const formData = new FormData();
+    formData.append("name", "");
+    formData.append("message", "");
+    const res = await app.request("/feedback", {
+      method: "POST",
+      body: formData,
+    });
+    expect(res.status).toBe(200);
+    const html = await res.text();
+    expect(html).toContain("is required");
+  });
+});
+
 describe("404 handling", () => {
   it("returns 404 for an unknown route", async () => {
     const res = await app.request("/nonexistent-route");
